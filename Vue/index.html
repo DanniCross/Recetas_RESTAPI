@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	<meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Jose Cruz">
+        <link rel="stylesheet" type="text/css" href="index.css">
+    	<title>REST API</title>
+    </head>
+    <body>
+        <div id="app">
+            <form class="form-group" @submit.prevent="">
+                <div class="Titulo">
+                    <h1>¡TUSRECETAS!</h1>
+                    <h2>Miles de recetas de cocina para ti</h2>   
+                </div>
+                <span class="input-group-btn">
+                    <button type="submit" @click="getCAPI" onclick="javascript:pass.className = 'no'; pass2.className = 'no2';">Ver Recetas</button>
+                    <button class="btn btn-primary" type="submit" @click="getAPI" onclick="javascript:pass.className = 'no'; pass2.className = 'no2'; sig.className = 'sss';">Mostrar Receta</button>
+                    <input type="submit" value="Ingresar Receta" class="boton" onclick = "javascript:if(pass.className == 'no'){pass.className = 'si'}else{pass.className = 'no'}; pass2.className = 'no2'; sig.className = 'nnn';"> 
+                    <button type="submit" onclick="javascript:pass.className = 'no'; if(pass2.className == 'no2' && idBus.value != ''){pass2.className = 'si2'}else{pass2.className = 'no2'}; sig.className = 'sss';">Actualizar Receta</button>
+                    <button type="submit" onclick="javascript:pass.className = 'no'; pass2.className = 'no2'; sig.className = 'sss';" @click="deleteAPI">Borrar Receta</button>
+                </span>
+                <div class="sss" id="sig">
+                    <form class="in">
+                        <label for="idBus">ID</label>
+                        <input id="idBus" type="text" v-model="pos" placeholder="Ingrese el ID(pos) para filtrar: ej= 1">
+                    </form>
+                </div>
+                <div class="no" id="pass">
+                    <form class="form_reg" @submit.prevent="">
+                        <div class="id">
+                            <div>
+                                <label for="idCrear">Ingrese ID</label>
+                            </div>
+                            <input id="idCrear" type="text" v-model="pos" placeholder="ej= 1">
+                        </div>
+                        <div class="rece">
+                            <label for="recCrear">Ingrese Receta</label>
+                            <input id="recCrear" type="text" v-model="crear.nombre" placeholder="ej= Lazzagna">
+                        </div>
+                        <div class="ingre">
+                            <button type="text" @click=" crear.ingredientes.push('')">Ingrese ingrediente</button>
+                            <input type="text" v-model="crear.ingredientes[index]" v-for="ingrediente, index in crear.ingredientes" placeholder="ej= Mozzarella">
+                        </div>
+                        <div class="pas">
+                            <label for="elaboracionC">Ingrese pasos</label>
+                            <input id="elaboracionC" type="text" v-model="crear.elaboracion" placeholder="ej= Calentar el agua">
+                        </div>
+                        <span class="input-group">
+                            <button class="btn btn-primary" type="submit" @click="setAPI">Crear</button>
+                       </span>
+                    </form>
+                </div>
+                <div class="no2" id="pass2" >
+                    <form class="form_act" @submit.prevent="" v-for="recetas in receta">
+                        <div class="actN">
+                            <input class="button" type="submit" onclick="javascript:if(nom.className == 'n'){nom.className = 's'}else{nom.className ='n'};" @click="edit(recetas)" value="Actualizar nombre de receta">
+                            <div class="n" id="nom">
+                                <label for="recAct">Ingrese nombre de receta</label>
+                                <input id="recAct" type="text" v-model="update.nombre" placeholder="ej= Lazzagna boloñesa" value="recetas.nombre">
+                            </div>
+                        </div>
+                        <div class="actIng">
+                            <button type="text" @click=" update.ingredientes.push('')">Ingrese ingrediente nuevo</button>
+                            <input type="text" v-model="update.ingredientes[index]" v-for="ingrediente, index in update.ingredientes" placeholder="ej= queso" v-if="recetas.ingredientes && recetas.ingredientes.length">
+                        </div>
+                        <div class="actPas">
+                            <button type="submit" onclick="javascript:if(paso.className == 'n1'){paso.className = 's1'}else{paso.className ='n1'};">Agregar paso</button>
+                            <div class="n1" id="paso">
+                                <label for="elaboracionB">Ingrese paso(s) nuevo(s)</label>
+                                <input id="elaboracionB" type="text" v-model="update.elaboracion" placeholder="ej= Agregar sal" value="recetas.paso">
+                            </div>
+                        </div>
+                        <span class="group-btn">
+                            <button class="btn btn-primary" type="submit" @click="updateAPI">Actualizar</button>
+                       </span>
+                    </form>
+                </div>
+                <div class="datos">
+                    <ul>
+                        <li v-for="recetas in receta">
+                            <h2>{{recetas.nombre}}</h2>
+                            <h4>INGREDIENTES:</h4>
+                            <ol>
+                                <li v-for="ingrediente in recetas.ingredientes">{{ingrediente}}</li>
+                            </ol>
+                            <H4>ELABORACIÓN:</H4>
+                            <p>{{recetas.elaboracion}}</p>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+    	<script src="https://unpkg.com/vue"></script>
+    	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    	<script src="index.js"></script>
+    </body>
+</html>

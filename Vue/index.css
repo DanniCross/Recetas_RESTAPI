@@ -1,0 +1,96 @@
+.datos{
+	font-weight: normal;
+    justify-content: center; 
+    margin: 0;
+}
+
+.Titulo{
+    font-weight: normal;
+    text-align: center;
+    margin: 0;
+}
+
+.input-group-btn{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.sss{
+	display: block;
+	padding: 0 2rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	max-width: 250px;
+	height: auto;
+	margin: 5% auto;
+	padding-bottom: 1rem;
+}
+
+.nnn{
+	display: none;
+}
+
+.si{
+	display: block;
+	padding: 0 2rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	max-width: 250px;
+	height: auto;
+	margin: 5% auto;
+	padding-bottom: 1rem;
+}
+
+.no{
+	display: none;
+}
+
+.si2{
+	display: block;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	max-width: 200px;
+	height: auto;
+	margin: 0% auto;
+	padding-bottom: 1rem;
+}
+
+.no2{
+	display: none;
+}
+
+.s{
+	display: block;
+	padding: 0 2rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	max-width: 250px;
+	height: auto;
+	margin: 5% auto;
+	padding-bottom: 1rem;
+}
+
+.n{
+	display: none;
+}
+
+.s1{
+	display: block;
+	padding: 0 2rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	max-width: 250px;
+	height: auto;
+	margin: 5% auto;
+	padding-bottom: 1rem;
+}
+
+.n1{
+	display: none;
+}
